@@ -42,7 +42,7 @@ namespace Carpet_Cost__ASP_Razor_.Pages
             else { carpet.UnderlayFee = 0; }
             
             //grabs the cost and type of the selected carpet from the carpet list
-            var selectedCarpet = carpet.CarpetChoiceList.FirstOrDefault(c => c.CarpetType == carpet.CarpetChoice);
+            var selectedCarpet = carpet.CarpetChoiceList.FirstOrDefault(x => x.CarpetType == carpet.CarpetChoice);
             carpet.CarpetCost = selectedCarpet.CarpetCost;
             carpet.CarpetType = selectedCarpet.CarpetType;
 
