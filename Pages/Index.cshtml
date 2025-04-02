@@ -1,0 +1,55 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="card" style=" margin-top: 20px">
+    <div class="card-header">
+        <h1>Carpet Cost Calculator</h1>
+    </div>
+    <div class="card-body">
+        <h3 class="mb-4">Purchasing Options</h3>
+        <form method="post">
+            <div class="form-group">
+                <div class="row mb-5">
+                    <div class="col-4 text-center">
+                        <label asp-for="carpet.RoomWidth"></label> <br />
+                        <input type="number" asp-for="carpet.RoomWidth"/>
+                    </div>
+                    <div class="col-4 text-center">
+                        <label asp-for="carpet.RoomLength"></label> <br />
+                        <input type="number" asp-for="carpet.RoomLength"/>
+                    </div>
+
+                    <div class="col-4 text-center">
+                        <label asp-for="carpet.CarpetChoice"></label> <br />
+                        <select asp-for="carpet.CarpetChoice" asp-items="@(new SelectList(Model.carpet.CarpetChoiceList, "CarpetType", "CarpetType"))">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <input type="checkbox" asp-for="carpet.Installation" class="col-1" />
+                    <label asp-for="carpet.Installation" class="col-lg-5"></label>
+                </div>
+                <br />
+
+                <div class="row mb-5">
+                    <input type="checkbox" asp-for="carpet.Underlay" class="col-1" />
+                    <label asp-for="carpet.Underlay" class="col-lg-5"></label>
+                </div>
+
+                <div class="row col-lg-5 mb-3 mx-auto">
+                    <input type="submit" value="Submit" asp-action="Index" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card-footer">
+        <h3 class="mb-3">Total Carpet Cost</h3>
+        <div class="row">
+            <p class="card-text">@Html.Raw(Model.carpet.Result)</p>
+        </div>
+    </div>
+</div>
